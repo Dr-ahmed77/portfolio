@@ -1,1 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed Khadar — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --white:#ffffff;
+  --bg:#f8f7ff;
+  --surface:#f0eeff;
+  --border:#e4e0f5;
+  --ink:#0e0b1a;
+  --ink2:#1c1830;
+  --muted:#7c74a0;
+  --light:#b0a8cc;
+  --v:#6c3df4;
+  --vl:#f0ebff;
+  --vd:#5228d4;
+}
+body{background:var(--white);color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
+/* MARQUEE */
+.mbar{background:var(--ink);overflow:hidden;white-space:nowrap;padding:10px 0}
+.mtrack{display:inline-flex;animation:tick 30s linear infinite}
+.mtrack span{font-size:0.66rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);padding:0 26px}
+.mtrack .hi{color:#a78bfa}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:64px}
+.logo{font-size:1rem;font-weight:800;letter-spacing:-0.03em;color:var(--ink);text-decoration:none}
+.logo span{color:var(--v)}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{font-size:0.78rem;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.15s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{font-size:0.76rem;font-weight:700;color:var(--white);background:var(--v);padding:9px 20px;border-radius:8px;text-decoration:none;transition:background 0.15s,transform 0.15s}
+.nav-cta:hover{background:var(--vd);transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:calc(100vh - 104px);display:grid;grid-template-columns:1fr 420px;align-items:stretch;border-bottom:1px solid var(--border);padding:0 52px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 72px 80px 0;border-right:1px solid var(--border)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--vl);color:var(--v);font-size:0.7rem;font-weight:700;letter-spacing:0.06em;padding:6px 14px;border-radius:100px;margin-bottom:30px;width:fit-content}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--v);animation:bdot 2s ease-in-out infinite}
+@keyframes bdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.6)}}
+.hero-title{font-size:clamp(3.2rem,6.5vw,6.2rem);font-weight:800;letter-spacing:-0.05em;line-height:0.94;margin-bottom:26px}
+.hero-title .dim{color:var(--muted);font-weight:300;font-style:italic}
+.hero-desc{font-size:0.96rem;color:var(--muted);line-height:1.75;max-width:420px;margin-bottom:40px}
+.hero-btns{display:flex;gap:12px;margin-bottom:52px}
+.btn-v{font-size:0.8rem;font-weight:700;color:var(--white);background:var(--v);padding:13px 28px;border-radius:10px;text-decoration:none;transition:background 0.15s,transform 0.15s,box-shadow 0.15s}
+.btn-v:hover{background:var(--vd);transform:translateY(-2px);box-shadow:0 8px 24px rgba(108,61,244,0.28)}
+.btn-ol{font-size:0.8rem;font-weight:600;color:var(--ink2);border:1.5px solid var(--border);padding:12px 24px;border-radius:10px;text-decoration:none;transition:all 0.15s}
+.btn-ol:hover{border-color:var(--v);color:var(--v)}
+.hero-stats{display:flex;gap:36px}
+.hst-n{font-size:1.65rem;font-weight:800;letter-spacing:-0.04em;display:block;line-height:1}
+.hst-n span{color:var(--v)}
+.hst-l{font-size:0.68rem;font-weight:500;color:var(--muted);margin-top:4px;display:block}
+
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:60px 0 60px 44px;gap:14px}
+.hcard{background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s}
+.hcard:hover{border-color:var(--v);transform:translateX(4px);box-shadow:0 4px 20px rgba(108,61,244,0.1)}
+.hcard-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.ic-v{background:var(--vl)}
+.ic-dk{background:var(--ink);color:white}
+.ic-pk{background:#fff0f8}
+.ic-go{background:#fff8ed}
+.hcard-title{font-size:0.86rem;font-weight:700;letter-spacing:-0.01em;color:var(--ink);margin-bottom:2px}
+.hcard-sub{font-size:0.7rem;color:var(--muted);font-weight:400}
+
+/* PROJECTS */
+.projects{padding:88px 52px;border-bottom:1px solid var(--border)}
+.sec-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:44px}
+.sec-title{font-size:1.85rem;font-weight:800;letter-spacing:-0.04em}
+.sec-link{font-size:0.76rem;font-weight:600;color:var(--v);text-decoration:none}
+.sec-link:hover{text-decoration:underline}
+
+.pgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:auto auto;gap:14px}
+
+.pcard{border-radius:16px;overflow:hidden;border:1.5px solid var(--border);background:var(--white);cursor:pointer;transition:transform 0.25s,box-shadow 0.25s}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(14,11,26,0.1)}
+.pcard.feat{grid-row:span 2;display:flex;flex-direction:column}
+
+.pthumb{position:relative;overflow:hidden}
+.pcard.feat .pthumb{flex:1}
+.pthumb-inner{display:flex;align-items:center;justify-content:center;min-height:200px}
+.pcard.feat .pthumb-inner{min-height:320px;height:100%}
+
+/* Real photo thumbs */
+.pthumb img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;transition:transform 0.5s ease;filter:brightness(0.78)}
+.pcard:hover .pthumb img{transform:scale(1.04);filter:brightness(0.6)}
+.pthumb-inner{position:relative;z-index:1}
+
+/* Thumb overlays */
+.ptag{position:absolute;top:14px;left:14px;z-index:3;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px}
+.pt-v{background:rgba(108,61,244,0.85);color:white}
+.pt-dk{background:rgba(14,11,26,0.75);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.15)}
+.pt-pk{background:rgba(197,61,212,0.8);color:white}
+.pt-go{background:rgba(201,169,110,0.9);color:#09080d}
+
+.poverlay{position:absolute;inset:0;background:rgba(108,61,244,0.82);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.25s;z-index:4}
+.pthumb:hover .poverlay{opacity:1}
+.povbtn{font-size:0.76rem;font-weight:700;letter-spacing:0.04em;color:white;border:1.5px solid rgba(255,255,255,0.6);padding:10px 22px;border-radius:8px;background:transparent;cursor:pointer;transition:background 0.15s}
+.povbtn:hover{background:rgba(255,255,255,0.15)}
+
+/* MEDX wordmark overlay */
+.medx-wm{text-align:center;padding:0 20px}
+.medx-wm-text{font-size:3.8rem;font-weight:800;letter-spacing:-0.06em;color:white;opacity:0.92;line-height:1;text-shadow:0 0 60px rgba(108,61,244,0.5)}
+.medx-wm-sub{font-size:0.58rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:8px}
+.medx-wm-tags{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.medx-wm-tags span{font-size:0.56rem;font-weight:700;letter-spacing:0.1em;padding:4px 10px;border-radius:100px;border:1px solid rgba(108,61,244,0.5);color:rgba(108,61,244,0.9);background:rgba(108,61,244,0.08)}
+
+.pbody{padding:16px 18px 18px;border-top:1px solid var(--border)}
+.pname{font-size:0.94rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:4px}
+.pcard.feat .pname{font-size:1.05rem}
+.pmeta{display:flex;align-items:center;justify-content:space-between}
+.ptype{font-size:0.68rem;font-weight:500;color:var(--muted)}
+.pbadge{font-size:0.6rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 9px;border-radius:100px}
+.pb-v{background:var(--vl);color:var(--v)}
+.pb-dk{background:#f0f0f8;color:#4040a0}
+.pb-pk{background:#fdf0ff;color:#9a22c0}
+.pb-go{background:#fffbf0;color:#a07020}
+
+/* SERVICES */
+.services{padding:88px 52px;border-bottom:1px solid var(--border)}
+.slist{display:flex;flex-direction:column;margin-top:44px}
+.srow{display:grid;grid-template-columns:48px 200px 1fr auto;align-items:center;gap:28px;padding:26px 20px;border-radius:12px;transition:background 0.2s;cursor:default}
+.srow:hover{background:var(--bg)}
+.srow+.srow{border-top:1px solid var(--border);border-radius:0}
+.srow:hover{border-radius:12px;margin:0 -8px;padding-left:28px;padding-right:28px}
+.sn{font-size:0.68rem;font-weight:700;color:var(--v);letter-spacing:0.06em}
+.sname{font-size:1rem;font-weight:700;letter-spacing:-0.02em}
+.sdesc{font-size:0.82rem;color:var(--muted);line-height:1.6}
+.stags{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.stag{font-size:0.62rem;font-weight:600;padding:4px 10px;border-radius:100px;background:var(--surface);color:var(--muted);border:1px solid var(--border)}
+
+/* ABOUT */
+.about{padding:88px 52px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;border-bottom:1px solid var(--border)}
+.about-lbl{font-size:0.66rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--v);margin-bottom:16px;display:block}
+.about-title{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;letter-spacing:-0.04em;line-height:1.1;margin-bottom:18px}
+.about-title em{color:var(--muted);font-style:italic;font-weight:300}
+.about-p{font-size:0.86rem;color:var(--muted);line-height:1.8;margin-bottom:12px}
+.skill-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px}
+.sgrp-lbl{font-size:0.6rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink);margin-bottom:10px;display:block}
+.sgrp ul{list-style:none}
+.sgrp li{font-size:0.8rem;color:var(--muted);padding:5px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.sgrp li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--v);flex-shrink:0}
+
+.about-cards{display:flex;flex-direction:column;gap:12px}
+.avail-card{background:#f0fdf7;border:1.5px solid #bbf0d8;border-radius:14px;padding:20px 22px;display:flex;align-items:center;gap:14px}
+.avail-pulse{width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0;animation:aring 2s ease-in-out infinite}
+@keyframes aring{0%{box-shadow:0 0 0 0 rgba(34,197,94,0.4)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.avail-text{font-size:0.84rem;font-weight:600;color:#166534}
+.avail-sub{font-size:0.7rem;color:#4ade80;display:block;margin-top:1px}
+.info-card{background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:20px 22px;display:flex;align-items:center;gap:14px;transition:border-color 0.2s}
+.info-card:hover{border-color:var(--v)}
+.info-icon{width:40px;height:40px;border-radius:10px;background:var(--vl);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.info-lbl{font-size:0.62rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
+.info-val{font-size:0.88rem;font-weight:600;color:var(--ink);text-decoration:none;transition:color 0.15s}
+a.info-val:hover{color:var(--v)}
+
+/* CTA */
+.cta{padding:110px 52px;background:var(--ink);text-align:center}
+.cta-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(108,61,244,0.15);border:1px solid rgba(108,61,244,0.3);color:#a78bfa;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:26px}
+.cta-title{font-size:clamp(2.5rem,5.5vw,5rem);font-weight:800;letter-spacing:-0.05em;line-height:1;color:var(--white);margin-bottom:18px}
+.cta-title em{color:#7da4ff;font-style:italic;font-weight:300}
+.cta-sub{font-size:0.92rem;color:rgba(255,255,255,0.38);max-width:400px;margin:0 auto 40px;line-height:1.7}
+.cta-btns{display:flex;gap:12px;justify-content:center;align-items:center}
+.btn-cta{font-size:0.82rem;font-weight:700;color:var(--ink);background:var(--white);padding:13px 30px;border-radius:10px;text-decoration:none;transition:background 0.15s,transform 0.15s}
+.btn-cta:hover{background:#e8e0ff;transform:translateY(-2px)}
+.btn-cta-g{font-size:0.82rem;font-weight:600;color:rgba(255,255,255,0.38);text-decoration:none;padding:13px 22px;transition:color 0.15s}
+.btn-cta-g:hover{color:white}
+
+/* FOOTER */
+footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);padding:22px 52px;display:flex;align-items:center;justify-content:space-between}
+.flogo{font-size:0.88rem;font-weight:800;letter-spacing:-0.02em;color:rgba(255,255,255,0.25)}
+.flogo span{color:var(--v)}
+.flinks-row{display:flex;gap:22px}
+.flink{font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.22);text-decoration:none;transition:color 0.15s}
+.flink:hover{color:rgba(255,255,255,0.65)}
+.fcopy{font-size:0.65rem;color:rgba(255,255,255,0.14)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(14,11,26,0.72);backdrop-filter:blur(10px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity 0.25s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--white);border-radius:20px;width:100%;max-width:700px;max-height:88vh;overflow-y:auto;transform:translateY(22px) scale(0.97);transition:transform 0.3s ease;box-shadow:0 32px 80px rgba(14,11,26,0.35)}
+.modal-overlay.open .modal{transform:none}
+.modal-hero{position:relative;height:260px;border-radius:20px 20px 0 0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.modal-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.55)}
+.modal-hero-content{position:relative;z-index:1;text-align:center;padding:0 32px}
+.modal-hero-title{font-size:2.6rem;font-weight:800;letter-spacing:-0.05em;color:white;text-shadow:0 2px 20px rgba(0,0,0,0.4)}
+.modal-hero-sub{font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:8px}
+.modal-close{position:absolute;top:14px;right:14px;width:34px;height:34px;background:rgba(0,0,0,0.3);backdrop-filter:blur(4px);border:none;border-radius:50%;color:white;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s;z-index:5}
+.modal-close:hover{background:rgba(0,0,0,0.55)}
+.modal-body{padding:30px 34px 34px}
+.modal-tag{font-size:0.63rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--v);display:block;margin-bottom:8px}
+.modal-title{font-size:1.65rem;font-weight:800;letter-spacing:-0.04em;margin-bottom:12px}
+.modal-desc{font-size:0.86rem;color:var(--muted);line-height:1.78;margin-bottom:22px}
+.modal-stack{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:26px}
+.mstag{font-size:0.7rem;font-weight:600;padding:5px 12px;border-radius:100px;background:var(--bg);border:1.5px solid var(--border);color:var(--ink2)}
+.modal-actions{display:flex;gap:10px}
+.mbtn{font-size:0.78rem;font-weight:700;padding:11px 22px;border-radius:8px;text-decoration:none;display:inline-block;transition:transform 0.15s,box-shadow 0.15s;cursor:pointer;border:none}
+.mbtn:hover{transform:translateY(-1px)}
+.mbtn.prim{background:var(--v);color:white;box-shadow:0 4px 16px rgba(108,61,244,0.22)}
+.mbtn.prim:hover{box-shadow:0 8px 24px rgba(108,61,244,0.35)}
+.mbtn.sec{background:var(--bg);color:var(--ink2);border:1.5px solid var(--border)}
+
+/* SCROLL REVEAL */
+.sr{opacity:0;transform:translateY(16px);transition:opacity 0.55s ease,transform 0.55s ease}
+.sr.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- MARQUEE -->
+<div class="mbar">
+  <div class="mtrack">
+    <span>Web Development</span><span class="hi"> ✦ </span>
+    <span>UI/UX Design</span><span class="hi"> ✦ </span>
+    <span>Graphic Design</span><span class="hi"> ✦ </span>
+    <span>Video Editing</span><span class="hi"> ✦ </span>
+    <span class="hi">Ahmed Khadar</span><span class="hi"> ✦ </span>
+    <span>Algeria 🇩🇿</span><span class="hi"> ✦ </span>
+    <span>Open to Work</span><span class="hi"> ✦ </span>
+    <span>Web Development</span><span class="hi"> ✦ </span>
+    <span>UI/UX Design</span><span class="hi"> ✦ </span>
+    <span>Graphic Design</span><span class="hi"> ✦ </span>
+    <span>Video Editing</span><span class="hi"> ✦ </span>
+    <span class="hi">Ahmed Khadar</span><span class="hi"> ✦ </span>
+    <span>Algeria 🇩🇿</span><span class="hi"> ✦ </span>
+    <span>Open to Work</span><span class="hi"> ✦ </span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Ahmed<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="mailto:khadar77ahmed@gmail.com" class="nav-cta">Hire Me →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Available for new projects
+    </div>
+    <h1 class="hero-title">
+      Ahmed<br>
+      <span class="dim">Khadar.</span>
+    </h1>
+    <p class="hero-desc">Designer, developer & video editor — I build clean, fast digital experiences. From landing pages to full platforms.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-v">View Projects</a>
+      <a href="mailto:khadar77ahmed@gmail.com" class="btn-ol">Contact Me</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="hst-n">3<span>+</span></span><span class="hst-l">Years exp.</span></div>
+      <div><span class="hst-n">20<span>+</span></span><span class="hst-l">Projects</span></div>
+      <div><span class="hst-n">4</span><span class="hst-l">Core Skills</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hcard" onclick="openModal('medx')">
+      <div class="hcard-icon ic-v">🧬</div>
+      <div><div class="hcard-title">MEDX Platform</div><div class="hcard-sub">Web App · Firebase · Algeria</div></div>
+    </div>
+    <div class="hcard" onclick="openModal('fashion')">
+      <div class="hcard-icon ic-dk">👗</div>
+      <div><div class="hcard-title">Fashion Studio</div><div class="hcard-sub">E-commerce · Fashion DZ</div></div>
+    </div>
+    <div class="hcard" onclick="openModal('coffe')">
+      <div class="hcard-icon ic-go">☕</div>
+      <div><div class="hcard-title">Coffe.</div><div class="hcard-sub">Café & Restaurant · Alger</div></div>
+    </div>
+    <div class="hcard" onclick="openModal('design')">
+      <div class="hcard-icon ic-pk">🎨</div>
+      <div><div class="hcard-title">Visual Design</div><div class="hcard-sub">Photoshop · Branding · Social</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="sec-top sr">
+    <h2 class="sec-title">Selected Work</h2>
+    <a href="https://github.com/ahmed-khx7" target="_blank" class="sec-link">GitHub →</a>
+  </div>
+
+  <div class="pgrid sr">
+
+    <!-- MEDX — Featured -->
+    <div class="pcard feat" onclick="openModal('medx')">
+      <div class="pthumb" style="flex:1;min-height:340px">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80" alt="MEDX Platform">
+        <div class="ptag pt-v">Web App</div>
+        <div class="pthumb-inner">
+          <div class="medx-wm">
+            <div class="medx-wm-text">MEDX</div>
+            <div class="medx-wm-sub">Medical Study Platform · Algeria 🇩🇿</div>
+            <div class="medx-wm-tags">
+              <span>QCM</span><span>Flashcards</span><span>AI</span>
+            </div>
+          </div>
+        </div>
+        <div class="poverlay"><span class="povbtn">View Project</span></div>
+      </div>
+      <div class="pbody">
+        <div class="pname">MEDX Platform</div>
+        <div class="pmeta">
+          <span class="ptype">Web App · Firebase · Vercel</span>
+          <span class="pbadge pb-v">Live 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fashion Studio -->
+    <div class="pcard" onclick="openModal('fashion')">
+      <div class="pthumb" style="height:200px">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=700&q=80" alt="Fashion Studio">
+        <div class="ptag pt-dk">E-commerce</div>
+        <div class="poverlay"><span class="povbtn">View Project</span></div>
+      </div>
+      <div class="pbody">
+        <div class="pname">Fashion Studio</div>
+        <div class="pmeta">
+          <span class="ptype">HTML/CSS · JS</span>
+          <span class="pbadge pb-dk">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coffe -->
+    <div class="pcard" onclick="openModal('coffe')">
+      <div class="pthumb" style="height:200px">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=80" alt="Coffe Café">
+        <div class="ptag pt-go">Restaurant</div>
+        <div class="poverlay"><span class="povbtn">View Project</span></div>
+      </div>
+      <div class="pbody">
+        <div class="pname">Coffe.</div>
+        <div class="pmeta">
+          <span class="ptype">HTML/CSS · JS</span>
+          <span class="pbadge pb-go">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Design -->
+    <div class="pcard" onclick="openModal('design')" style="grid-column:span 2">
+      <div class="pthumb" style="height:190px">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1000&q=80" alt="Visual Design">
+        <div class="ptag pt-pk">Design</div>
+        <div class="poverlay"><span class="povbtn">View Project</span></div>
+      </div>
+      <div class="pbody">
+        <div class="pname">Visual Design & Branding</div>
+        <div class="pmeta">
+          <span class="ptype">Photoshop · Social Media · Branding</span>
+          <span class="pbadge pb-pk">2024–2025</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-top sr">
+    <h2 class="sec-title">Services</h2>
+    <span style="font-size:0.76rem;color:var(--muted)">04 specialties</span>
+  </div>
+  <div class="slist sr">
+    <div class="srow">
+      <span class="sn">01</span>
+      <div class="sname">Web Development</div>
+      <p class="sdesc">Fast, responsive websites and apps from scratch. Clean code, real performance.</p>
+      <div class="stags"><span class="stag">HTML/CSS</span><span class="stag">JavaScript</span><span class="stag">Firebase</span><span class="stag">Vercel</span></div>
+    </div>
+    <div class="srow">
+      <span class="sn">02</span>
+      <div class="sname">UI/UX Design</div>
+      <p class="sdesc">Interfaces that feel intentional. Wireframes, visual design, design systems.</p>
+      <div class="stags"><span class="stag">Figma</span><span class="stag">Systems</span><span class="stag">Prototypes</span></div>
+    </div>
+    <div class="srow">
+      <span class="sn">03</span>
+      <div class="sname">Graphic Design</div>
+      <p class="sdesc">Social media visuals, brand identities, posters — crafted in Photoshop.</p>
+      <div class="stags"><span class="stag">Photoshop</span><span class="stag">Illustrator</span><span class="stag">Branding</span></div>
+    </div>
+    <div class="srow">
+      <span class="sn">04</span>
+      <div class="sname">Video Editing</div>
+      <p class="sdesc">Cinematic edits and motion graphics for brands, products, and social media.</p>
+      <div class="stags"><span class="stag">Premiere Pro</span><span class="stag">After Effects</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="sr">
+    <span class="about-lbl">About Me</span>
+    <h2 class="about-title">Builder.<br><em>Not just a freelancer.</em></h2>
+    <p class="about-p">I'm Ahmed Khadar — based in Algeria. I design interfaces, build web platforms, and create visual content. I work independently and care about the quality of what I ship.</p>
+    <p class="about-p">Currently building MEDX, a full platform for Algerian medical students, while taking on freelance projects across design, dev, and video.</p>
+    <div class="skill-cols">
+      <div class="sgrp">
+        <span class="sgrp-lbl">Development</span>
+        <ul><li>HTML / CSS</li><li>JavaScript</li><li>Firebase</li><li>Vercel / Git</li></ul>
+      </div>
+      <div class="sgrp">
+        <span class="sgrp-lbl">Design & Video</span>
+        <ul><li>Figma</li><li>Photoshop</li><li>Premiere Pro</li><li>After Effects</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="about-cards sr">
+    <div class="avail-card">
+      <span class="avail-pulse"></span>
+      <div><div class="avail-text">Available for new projects</div><span class="avail-sub">Fast response · Quality work</span></div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">✉️</div>
+      <div><span class="info-lbl">Email</span><a href="mailto:khadar77ahmed@gmail.com" class="info-val">khadar77ahmed@gmail.com</a></div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon">📸</div>
+      <div><span class="info-lbl">Instagram</span><a href="https://instagram.com/ahmed_khx7" target="_blank" class="info-val">@ahmed_khx7</a></div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon" style="background:var(--surface)">💻</div>
+      <div><span class="info-lbl">GitHub</span><a href="https://github.com/ahmed-khx7" target="_blank" class="info-val">ahmed-khx7</a></div>
+    </div>
+    <div class="info-card">
+      <div class="info-icon" style="background:var(--surface)">📍</div>
+      <div><span class="info-lbl">Location</span><span class="info-val">Algeria 🇩🇿</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-chip">✦ Open to new projects</div>
+  <h2 class="cta-title">Let's Build<br><em>Something Great</em></h2>
+  <p class="cta-sub">Got a project? I'd love to hear about it. Send me a message and we'll figure out how I can help.</p>
+  <div class="cta-btns">
+    <a href="mailto:khadar77ahmed@gmail.com" class="btn-cta">Send an Email →</a>
+    <a href="https://instagram.com/ahmed_khx7" target="_blank" class="btn-cta-g">Instagram ↗</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="flogo">Ahmed<span>.</span></span>
+  <div class="flinks-row">
+    <a href="#projects" class="flink">Projects</a>
+    <a href="#services" class="flink">Services</a>
+    <a href="#about" class="flink">About</a>
+    <a href="mailto:khadar77ahmed@gmail.com" class="flink">Contact</a>
+  </div>
+  <span class="fcopy">© 2025 Ahmed Khadar</span>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeOnBg(event)">
+  <div class="modal" id="modal">
+    <div class="modal-hero" id="modal-hero">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-hero-content" id="modal-hero-content"></div>
+    </div>
+    <div class="modal-body">
+      <span class="modal-tag" id="modal-tag"></span>
+      <h3 class="modal-title" id="modal-title"></h3>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-stack" id="modal-stack"></div>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const PROJECTS = {
+  medx: {
+    tag: 'Web App · Live 2025',
+    title: 'MEDX Platform',
+    desc: 'Full-featured study platform for Algerian francophone medical students. QCM quizzes with CSV import, flashcards, XP/leveling system, live voice study rooms (Agora.io), AI assistant Dr. MEDX, leaderboard, community, and admin panel — built as a single-file HTML app on Firebase + Vercel.',
+    stack: ['HTML/CSS','JavaScript','Firebase','Agora.io','Cloudinary','Vercel'],
+    img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=80',
+    heroTitle: 'MEDX',
+    heroSub: 'Medical Study Platform · Algeria 🇩🇿',
+    link: 'https://med-x-7.vercel.app/',
+    linkLabel: 'Visit Live Site ↗',
+    github: 'https://github.com/ahmed-khx7'
+  },
+  fashion: {
+    tag: 'E-commerce · Web Design',
+    title: 'Fashion Studio',
+    desc: 'Full fashion e-commerce website for an Algerian clothing brand. Features product catalog with size selection, lookbook gallery, collections grid, newsletter, and a complete luxury dark aesthetic — designed to convert.',
+    stack: ['HTML/CSS','JavaScript','Unsplash','Responsive'],
+    img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80',
+    heroTitle: 'Fashion Studio',
+    heroSub: 'E-commerce · Algeria 🇩🇿',
+    link: './fashion-studio/index.html',
+    linkLabel: 'View Site ↗',
+    github: 'https://github.com/ahmed-khx7/portfolio'
+  },
+  coffe: {
+    tag: 'Restaurant · Web Design',
+    title: 'Coffe.',
+    desc: 'Warm, editorial café and restaurant website for an Algerian brand. Features full menu with tab navigation, photo gallery, testimonials, location map, ambiance section, and a clean cream aesthetic that communicates quality.',
+    stack: ['HTML/CSS','JavaScript','Unsplash','Responsive'],
+    img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80',
+    heroTitle: 'Coffe.',
+    heroSub: 'Café & Restaurant · Alger',
+    link: './coffe/index.html',
+    linkLabel: 'View Site ↗',
+    github: 'https://github.com/ahmed-khx7/portfolio'
+  },
+  design: {
+    tag: 'Graphic Design · Photoshop',
+    title: 'Visual Design & Branding',
+    desc: 'Social media posts, brand identities, and marketing materials crafted in Photoshop. Designed for Algerian businesses — clean compositions, strong typography, and color systems built to stop the scroll and communicate clearly.',
+    stack: ['Photoshop','Illustrator','Typography','Branding','Social Media'],
+    img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80',
+    heroTitle: 'Visual Design',
+    heroSub: 'Photoshop · Branding · Algeria',
+    link: 'https://instagram.com/ahmed_khx7',
+    linkLabel: 'View on Instagram ↗',
+    github: null
+  }
+};
+
+function openModal(id) {
+  const p = PROJECTS[id];
+  if (!p) return;
+
+  // Hero
+  const hero = document.getElementById('modal-hero');
+  hero.style.backgroundImage = `url(${p.img})`;
+  hero.style.backgroundSize = 'cover';
+  hero.style.backgroundPosition = 'center';
+  document.getElementById('modal-hero-content').innerHTML =
+    `<div class="modal-hero-title">${p.heroTitle}</div>
+     <div class="modal-hero-sub">${p.heroSub}</div>`;
+
+  // Body
+  document.getElementById('modal-tag').textContent   = p.tag;
+  document.getElementById('modal-title').textContent = p.title;
+  document.getElementById('modal-desc').textContent  = p.desc;
+  document.getElementById('modal-stack').innerHTML   =
+    p.stack.map(t => `<span class="mstag">${t}</span>`).join('');
+
+  let actions = `<a href="${p.link}" target="_blank" class="mbtn prim">${p.linkLabel}</a>`;
+  if (p.github) actions += `<a href="${p.github}" target="_blank" class="mbtn sec">GitHub ↗</a>`;
+  actions += `<button class="mbtn sec" onclick="closeModal()">Close</button>`;
+  document.getElementById('modal-actions').innerHTML = actions;
+
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeOnBg(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('in'), i * 70);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.sr').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
