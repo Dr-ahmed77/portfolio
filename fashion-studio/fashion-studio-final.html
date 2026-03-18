@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Studio — DZ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --black:#09080d;
+  --deep:#110f18;
+  --surface:#1a1726;
+  --border:rgba(255,255,255,0.08);
+  --white:#f7f4ef;
+  --muted:#7a7488;
+  --gold:#c9a96e;
+  --violet:#6c3df4;
+}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* MARQUEE */
+.mbar{background:var(--gold);overflow:hidden;white-space:nowrap;padding:9px 0}
+.mtrack{display:inline-flex;animation:mtick 22s linear infinite}
+.mtrack span{font-size:0.65rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--black);padding:0 28px}
+.mtrack .sep{color:rgba(9,8,13,0.35);padding:0 4px}
+@keyframes mtick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:66px;background:rgba(9,8,13,0.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;letter-spacing:0.06em;color:var(--white);text-decoration:none}
+.nav-logo em{color:var(--gold);font-style:normal}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:0.7rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-icon{font-size:1rem;color:var(--muted);cursor:pointer;transition:color 0.2s;background:none;border:none}
+.nav-icon:hover{color:var(--white)}
+.cart-wrap{position:relative}
+.cart-badge{position:absolute;top:-6px;right:-8px;background:var(--gold);color:var(--black);font-size:0.52rem;font-weight:700;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:66px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 52px;border-right:1px solid var(--border)}
+.hero-season{font-size:0.6rem;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;display:flex;align-items:center;gap:10px}
+.hero-season::before{content:'';width:20px;height:1px;background:var(--gold);display:inline-block}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,7.5vw,8rem);font-weight:300;line-height:0.88;letter-spacing:-0.02em;margin-bottom:32px}
+.hero-title em{font-style:italic;color:rgba(247,244,239,0.3)}
+.hero-desc{font-size:0.88rem;color:var(--muted);line-height:1.8;max-width:380px;margin-bottom:44px}
+.hero-actions{display:flex;gap:14px;align-items:center}
+.btn-gold{font-size:0.7rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:13px 30px;text-decoration:none;transition:opacity 0.2s,transform 0.2s;display:inline-block}
+.btn-gold:hover{opacity:0.85;transform:translateY(-2px)}
+.btn-ghost{font-size:0.7rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s}
+.btn-ghost:hover{color:var(--white)}
+
+.hero-right{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.hero-img{overflow:hidden;position:relative}
+.hero-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease;filter:brightness(0.85)}
+.hero-img:hover img{transform:scale(1.04)}
+.hero-img-label{position:absolute;bottom:14px;left:14px;font-family:'Cormorant Garamond',serif;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.6);font-style:italic}
+.hero-big{grid-row:span 2}
+
+/* CATEGORIES */
+.categories{padding:80px 52px;border-bottom:1px solid var(--border)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:48px}
+.sec-tag{font-size:0.6rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;letter-spacing:-0.02em}
+.sec-link{font-size:0.66rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.sec-link:hover{color:var(--gold)}
+
+.cat-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2px}
+.cat-card{position:relative;overflow:hidden;cursor:pointer}
+.cat-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;filter:brightness(0.7)}
+.cat-card:hover .cat-img{transform:scale(1.05);filter:brightness(0.55)}
+.cat-featured{height:520px}
+.cat-sm{height:258px}
+.cat-info{position:absolute;bottom:0;left:0;right:0;padding:22px 24px;background:linear-gradient(0deg,rgba(9,8,13,0.88) 0%,transparent 100%)}
+.cat-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;display:block;margin-bottom:3px}
+.cat-featured .cat-name{font-size:2rem}
+.cat-count{font-size:0.62rem;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.4)}
+
+/* PRODUCTS */
+.products{padding:80px 52px;border-bottom:1px solid var(--border)}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
+.prod-card{cursor:pointer}
+.prod-img-wrap{overflow:hidden;aspect-ratio:3/4;position:relative;background:var(--deep)}
+.prod-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.45s ease;filter:brightness(0.88)}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.05);filter:brightness(0.75)}
+.prod-badge{position:absolute;top:12px;left:12px;font-size:0.56rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:4px 10px;z-index:2}
+.badge-new{background:var(--gold);color:var(--black)}
+.badge-sale{background:#a855f7;color:var(--white)}
+.prod-info{padding:14px 0 0}
+.prod-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;letter-spacing:0.02em;margin-bottom:6px}
+.prod-meta{display:flex;align-items:center;justify-content:space-between}
+.prod-price{font-size:0.78rem;font-weight:500;color:var(--gold)}
+.prod-price s{color:var(--muted);margin-right:5px;font-weight:300}
+.prod-sizes{display:flex;gap:4px}
+.sz{font-size:0.53rem;font-weight:500;letter-spacing:0.06em;padding:3px 6px;border:1px solid var(--border);color:var(--muted);transition:all 0.15s;cursor:pointer}
+.sz:hover{border-color:var(--gold);color:var(--gold)}
+
+/* LOOKBOOK */
+.lookbook{padding:80px 52px;background:var(--deep);border-bottom:1px solid var(--border)}
+.look-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:48px}
+.look-card{aspect-ratio:2/3;overflow:hidden;position:relative;cursor:pointer}
+.look-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;filter:brightness(0.8)}
+.look-card:hover img{transform:scale(1.06);filter:brightness(0.65)}
+.look-num{position:absolute;bottom:12px;left:12px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:rgba(247,244,239,0.5);font-weight:300}
+
+/* BRAND STATS */
+.brand-strip{padding:52px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:center;border-bottom:1px solid var(--border)}
+.bstat{text-align:center;padding:0 16px}
+.bstat-n{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:var(--white);display:block;line-height:1;letter-spacing:-0.04em}
+.bstat-n span{color:var(--gold)}
+.bstat-l{font-size:0.58rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-top:6px;display:block}
+.bstat-div{width:1px;height:48px;background:var(--border)}
+
+/* NEWSLETTER */
+.newsletter{padding:100px 52px;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.newsletter::before{content:'STUDIO';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:16rem;font-weight:600;color:rgba(255,255,255,0.018);pointer-events:none;white-space:nowrap;letter-spacing:-0.06em}
+.nl-tag{font-size:0.6rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:18px}
+.nl-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,4.5rem);font-weight:300;line-height:1.05;letter-spacing:-0.02em;margin-bottom:14px}
+.nl-title em{font-style:italic;color:rgba(247,244,239,0.3)}
+.nl-sub{font-size:0.84rem;color:var(--muted);margin-bottom:40px;line-height:1.7}
+.nl-form{display:flex;max-width:420px;margin:0 auto;border:1px solid rgba(201,169,110,0.3)}
+.nl-input{flex:1;background:transparent;border:none;padding:13px 18px;font-family:'DM Sans',sans-serif;font-size:0.82rem;color:var(--white);outline:none}
+.nl-input::placeholder{color:var(--muted)}
+.nl-btn{font-size:0.66rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--black);background:var(--gold);border:none;padding:13px 22px;cursor:pointer;transition:opacity 0.2s;white-space:nowrap}
+.nl-btn:hover{opacity:0.85}
+
+/* FOOTER */
+footer{background:var(--deep);padding:56px 52px 24px;border-top:1px solid var(--border)}
+.foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px;padding-bottom:48px;border-bottom:1px solid var(--border)}
+.foot-brand{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--white);letter-spacing:0.06em;display:block;margin-bottom:14px}
+.foot-brand em{color:var(--gold);font-style:normal}
+.foot-desc{font-size:0.78rem;color:rgba(247,244,239,0.35);line-height:1.75;margin-bottom:22px}
+.foot-socials{display:flex;gap:10px}
+.fsoc{width:34px;height:34px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:0.68rem;text-decoration:none;transition:all 0.2s}
+.fsoc:hover{border-color:var(--gold);color:var(--gold)}
+.fcol-title{font-size:0.6rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:rgba(247,244,239,0.35);margin-bottom:18px;display:block}
+.flinks{list-style:none;display:flex;flex-direction:column;gap:10px}
+.flinks a{font-size:0.78rem;color:rgba(247,244,239,0.45);text-decoration:none;transition:color 0.2s}
+.flinks a:hover{color:var(--gold)}
+.foot-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:22px}
+.foot-copy{font-size:0.66rem;color:rgba(247,244,239,0.2)}
+.foot-credit{font-size:0.66rem;color:rgba(247,244,239,0.2)}
+.foot-credit a{color:var(--gold);text-decoration:none}
+
+/* SCROLL REVEAL */
+.sr{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
+.sr.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- MARQUEE -->
+<div class="mbar">
+  <div class="mtrack">
+    <span>Nouvelle Collection SS 2025</span><span class="sep">✦</span>
+    <span>Livraison Gratuite +5000 DZD</span><span class="sep">✦</span>
+    <span>Made in Algeria</span><span class="sep">✦</span>
+    <span>Retour 30 jours</span><span class="sep">✦</span>
+    <span>Nouvelle Collection SS 2025</span><span class="sep">✦</span>
+    <span>Livraison Gratuite +5000 DZD</span><span class="sep">✦</span>
+    <span>Made in Algeria</span><span class="sep">✦</span>
+    <span>Retour 30 jours</span><span class="sep">✦</span>
+    <span>Nouvelle Collection SS 2025</span><span class="sep">✦</span>
+    <span>Livraison Gratuite +5000 DZD</span><span class="sep">✦</span>
+    <span>Made in Algeria</span><span class="sep">✦</span>
+    <span>Retour 30 jours</span><span class="sep">✦</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Fashion <em>Studio</em></a>
+  <ul class="nav-links">
+    <li><a href="#categories">Collections</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#lookbook">Lookbook</a></li>
+    <li><a href="#">À Propos</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon">🔍</button>
+    <button class="nav-icon">♡</button>
+    <div class="cart-wrap">
+      <button class="nav-icon">🛍</button>
+      <span class="cart-badge">2</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-season">SS 2025 — Algérie</div>
+    <h1 class="hero-title">
+      Dressed<br>
+      <em>in</em><br>
+      Silence.
+    </h1>
+    <p class="hero-desc">Une collection pensée pour celles et ceux qui parlent à travers leur style. Minimalisme audacieux, coupes précises.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-gold">Shop Collection</a>
+      <a href="#lookbook" class="btn-ghost">Voir Lookbook →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Real fashion photos from Unsplash -->
+    <div class="hero-img hero-big">
+      <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80" alt="Fashion editorial">
+      <span class="hero-img-label">Collection Femme</span>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80" alt="Fashion detail">
+      <span class="hero-img-label">SS 2025</span>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=80" alt="Fashion accessories">
+      <span class="hero-img-label">Accessoires</span>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="sec-head sr">
+    <div>
+      <span class="sec-tag">Explorer</span>
+      <h2 class="sec-title">Nos Collections</h2>
+    </div>
+    <a href="#" class="sec-link">Tout voir →</a>
+  </div>
+  <div class="cat-grid sr">
+    <div class="cat-card cat-featured">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80" alt="Collection Femme">
+      <div class="cat-info">
+        <span class="cat-name">Femme</span>
+        <span class="cat-count">48 pièces</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <div class="cat-card cat-sm">
+        <img class="cat-img" src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&q=80" alt="Collection Homme">
+        <div class="cat-info">
+          <span class="cat-name">Homme</span>
+          <span class="cat-count">36 pièces</span>
+        </div>
+      </div>
+      <div class="cat-card cat-sm">
+        <img class="cat-img" src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80" alt="Accessoires">
+        <div class="cat-info">
+          <span class="cat-name">Accessoires</span>
+          <span class="cat-count">22 pièces</span>
+        </div>
+      </div>
+    </div>
+    <div class="cat-card cat-featured">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=80" alt="Soldes">
+      <div class="cat-info">
+        <span class="cat-name">Soldes</span>
+        <span class="cat-count">Jusqu'à −40%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="sec-head sr">
+    <div>
+      <span class="sec-tag">Tendances</span>
+      <h2 class="sec-title">Nouveautés</h2>
+    </div>
+    <a href="#" class="sec-link">Tout voir →</a>
+  </div>
+  <div class="prod-grid sr">
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500&q=80" alt="Veste Satin">
+        <span class="prod-badge badge-new">New</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-name">Veste Satin Noir</div>
+        <div class="prod-meta">
+          <div class="prod-price">6 800 DZD</div>
+          <div class="prod-sizes"><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=500&q=80" alt="Oversized Tee">
+        <span class="prod-badge badge-new">New</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-name">Oversized Tee Cobalt</div>
+        <div class="prod-meta">
+          <div class="prod-price">3 500 DZD</div>
+          <div class="prod-sizes"><span class="sz">S</span><span class="sz">M</span><span class="sz">L</span><span class="sz">XL</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&q=80" alt="Cargo Wide">
+        <span class="prod-badge badge-sale">−30%</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-name">Cargo Wide Leg</div>
+        <div class="prod-meta">
+          <div class="prod-price"><s>4 200 DZD</s> 2 940 DZD</div>
+          <div class="prod-sizes"><span class="sz">M</span><span class="sz">L</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80" alt="Robe Fluid">
+        <span class="prod-badge badge-new">New</span>
+      </div>
+      <div class="prod-info">
+        <div class="prod-name">Robe Fluid Sauge</div>
+        <div class="prod-meta">
+          <div class="prod-price">5 200 DZD</div>
+          <div class="prod-sizes"><span class="sz">XS</span><span class="sz">S</span><span class="sz">M</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LOOKBOOK -->
+<section class="lookbook" id="lookbook">
+  <div class="sec-head sr">
+    <div>
+      <span class="sec-tag">Editorial</span>
+      <h2 class="sec-title">Lookbook SS 25</h2>
+    </div>
+    <a href="#" class="sec-link">Voir tout →</a>
+  </div>
+  <div class="look-grid sr">
+    <div class="look-card">
+      <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=400&q=80" alt="Look 1">
+      <span class="look-num">01</span>
+    </div>
+    <div class="look-card">
+      <img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400&q=80" alt="Look 2">
+      <span class="look-num">02</span>
+    </div>
+    <div class="look-card">
+      <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80" alt="Look 3">
+      <span class="look-num">03</span>
+    </div>
+    <div class="look-card">
+      <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80" alt="Look 4">
+      <span class="look-num">04</span>
+    </div>
+    <div class="look-card">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80" alt="Look 5">
+      <span class="look-num">05</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="brand-strip sr">
+  <div class="bstat"><span class="bstat-n">106<span>+</span></span><span class="bstat-l">Pièces uniques</span></div>
+  <div class="bstat-div"></div>
+  <div class="bstat"><span class="bstat-n">48<span>h</span></span><span class="bstat-l">Livraison express</span></div>
+  <div class="bstat-div"></div>
+  <div class="bstat"><span class="bstat-n">2<span>k+</span></span><span class="bstat-l">Clients satisfaits</span></div>
+  <div class="bstat-div"></div>
+  <div class="bstat"><span class="bstat-n">100<span>%</span></span><span class="bstat-l">Made in Algeria</span></div>
+</div>
+
+<!-- NEWSLETTER -->
+<section class="newsletter sr">
+  <span class="nl-tag">Rejoins la communauté</span>
+  <h2 class="nl-title">Sois le premier<br><em>à le savoir.</em></h2>
+  <p class="nl-sub">Nouvelles collections, offres exclusives — directement dans ta boîte.</p>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="ton@email.com">
+    <button class="nl-btn">S'inscrire</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-top sr">
+    <div>
+      <span class="foot-brand">Fashion <em>Studio</em></span>
+      <p class="foot-desc">Mode algérienne contemporaine. Des pièces pensées pour durer, conçues pour marquer les esprits.</p>
+      <div class="foot-socials">
+        <a href="#" class="fsoc">Ig</a>
+        <a href="#" class="fsoc">Tk</a>
+        <a href="#" class="fsoc">Fb</a>
+      </div>
+    </div>
+    <div>
+      <span class="fcol-title">Shop</span>
+      <ul class="flinks"><li><a href="#">Femme</a></li><li><a href="#">Homme</a></li><li><a href="#">Accessoires</a></li><li><a href="#">Soldes</a></li></ul>
+    </div>
+    <div>
+      <span class="fcol-title">Info</span>
+      <ul class="flinks"><li><a href="#">À propos</a></li><li><a href="#">Lookbook</a></li><li><a href="#">Livraison</a></li><li><a href="#">Retours</a></li></ul>
+    </div>
+    <div>
+      <span class="fcol-title">Contact</span>
+      <ul class="flinks"><li><a href="#">@fashionstudio.dz</a></li><li><a href="#">fashionstudio.dz</a></li><li><a href="#">Alger, Algérie 🇩🇿</a></li></ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span class="foot-copy">© 2025 Fashion Studio · Tous droits réservés.</span>
+    <span class="foot-credit">Designed by <a href="https://github.com/ahmed-khx7">Ahmed Khadar</a></span>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*70);obs.unobserve(e.target);}});},{threshold:0.07});
+document.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
