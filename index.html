@@ -294,70 +294,85 @@ nav{
   text-transform:uppercase;color:var(--muted);
 }
 
-/* Project items — big editorial rows */
-.proj-items{}
-.proj-item{
+/* Project CARDS grid */
+.proj-grid{
   display:grid;
-  grid-template-columns:60px 1fr 200px 120px 50px;
-  align-items:center;gap:24px;
-  padding:28px 0;
-  border-top:1px solid var(--border);
-  cursor:pointer;
-  position:relative;
-  transition:padding-left .25s cubic-bezier(.16,1,.3,1);
+  grid-template-columns:1.4fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:12px;
 }
-.proj-item:last-child{border-bottom:1px solid var(--border)}
-.proj-item:hover{padding-left:18px}
-.proj-item:hover .pi-name{color:var(--white)}
-.proj-item:hover .pi-num{color:var(--accent)}
-.proj-item:hover .pi-arrow{color:var(--accent);transform:translate(4px,-4px)}
-.proj-item:hover .pi-year{color:var(--accent)}
-
-/* Floating preview on hover */
-.proj-item::after{
-  content:'';
-  position:absolute;right:90px;top:50%;
-  transform:translateY(-50%) scale(.8) rotate(-2deg);
-  width:200px;height:130px;
-  background-size:cover;background-position:center;
-  border-radius:6px;
-  opacity:0;pointer-events:none;z-index:20;
-  transition:opacity .35s,transform .35s cubic-bezier(.16,1,.3,1);
-}
-.proj-item:hover::after{opacity:1;transform:translateY(-50%) scale(1) rotate(-1deg)}
-.pi-medx::after{background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&q=80')}
-.pi-fashion::after{background-image:url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=500&q=80')}
-.pi-coffe::after{background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80')}
-.pi-design::after{background-image:url('https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&q=80')}
-
-.pi-num{
-  font-family:'Syne',sans-serif;font-weight:700;
-  font-size:.82rem;letter-spacing:.08em;
-  color:rgba(237,236,234,.18);transition:color .25s;
-}
-.pi-name{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(2rem,3.5vw,3.2rem);
-  letter-spacing:-.03em;line-height:1;
-  color:rgba(237,236,234,.65);transition:color .25s;
-}
-.pi-tags{display:flex;gap:7px;flex-wrap:wrap}
-.pi-tag{
-  font-size:.58rem;font-weight:600;letter-spacing:.1em;
-  text-transform:uppercase;padding:4px 9px;
+.pc{
+  position:relative;overflow:hidden;
+  border-radius:6px;cursor:pointer;
   border:1px solid var(--border);
-  color:rgba(237,236,234,.3);border-radius:2px;
+  background:var(--bg2);
+  transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .25s;
 }
-.pi-year{
-  font-size:.65rem;font-weight:500;letter-spacing:.12em;
-  color:rgba(237,236,234,.2);text-align:right;
-  transition:color .25s;
+.pc:hover{transform:translateY(-5px);border-color:rgba(200,245,66,.25)}
+.pc.feat{grid-row:span 2;display:flex;flex-direction:column}
+
+/* Photo */
+.pc-thumb{
+  position:relative;overflow:hidden;
+  flex:1;
 }
-.pi-arrow{
-  font-size:1.1rem;color:rgba(237,236,234,.2);
-  text-align:right;
-  transition:transform .25s,color .25s;
+.pc.feat .pc-thumb{min-height:340px}
+.pc:not(.feat) .pc-thumb{height:220px}
+.pc-thumb img{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.7) saturate(.8);
+  transition:transform .55s cubic-bezier(.16,1,.3,1),filter .35s;
 }
+.pc:hover .pc-thumb img{transform:scale(1.06);filter:brightness(.5) saturate(.6)}
+
+/* Overlay on hover */
+.pc-ov{
+  position:absolute;inset:0;
+  background:rgba(12,12,11,.65);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .3s;z-index:3;
+}
+.pc:hover .pc-ov{opacity:1}
+.pc-ov-btn{
+  font-family:'Syne',sans-serif;
+  font-size:.72rem;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--bg);
+  background:var(--accent);
+  padding:11px 24px;border-radius:100px;
+  border:none;cursor:pointer;
+}
+
+/* Badge top left */
+.pc-badge{
+  position:absolute;top:14px;left:14px;z-index:4;
+  font-size:.58rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;padding:4px 10px;border-radius:100px;
+}
+.pb-lime{background:rgba(200,245,66,.15);color:var(--accent);border:1px solid rgba(200,245,66,.25)}
+.pb-white{background:rgba(237,236,234,.1);color:var(--white);border:1px solid rgba(237,236,234,.15)}
+.pb-red{background:rgba(255,60,47,.12);color:#ff3c2f;border:1px solid rgba(255,60,47,.2)}
+
+/* Card bottom info */
+.pc-info{
+  padding:18px 20px 20px;
+  border-top:1px solid var(--border);
+}
+.pc.feat .pc-info{padding:22px 24px 24px}
+.pc-name{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:1rem;letter-spacing:-.02em;margin-bottom:5px;
+}
+.pc.feat .pc-name{font-size:1.2rem}
+.pc-meta{display:flex;align-items:center;justify-content:space-between}
+.pc-type{font-size:.65rem;font-weight:500;color:var(--muted)}
+.pc-yr{
+  font-size:.6rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;padding:3px 9px;border-radius:100px;
+}
+.py-lime{background:rgba(200,245,66,.1);color:var(--accent)}
+.py-white{background:rgba(237,236,234,.07);color:rgba(237,236,234,.5)}
+.py-red{background:rgba(255,60,47,.1);color:#ff3c2f}
 
 /* ── SERVICES ── */
 .services{padding:100px 40px;border-bottom:1px solid var(--border);background:var(--bg2)}
@@ -636,8 +651,11 @@ footer{
   .stat:nth-child(3){border-top:1px solid var(--border)}
   .stat:nth-child(4){border-top:1px solid var(--border);border-right:none}
   .projects,.services,.about,.cta{padding:60px 20px}
-  .proj-item{grid-template-columns:44px 1fr 40px;gap:12px}
-  .pi-tags,.pi-year,.proj-item::after{display:none}
+  .proj-grid{grid-template-columns:1fr;gap:10px}
+  .pc.feat{grid-row:auto}
+  .pc[style*="grid-column:span 2"]{grid-column:auto}
+  .pc:not(.feat) .pc-thumb{height:200px}
+  .pc.feat .pc-thumb{min-height:240px}
   .srv-grid{grid-template-columns:1fr}
   .about{grid-template-columns:1fr;gap:40px}
   .cta-btns{flex-direction:column}
@@ -759,51 +777,75 @@ footer{
       <div class="sec-label">Selected Work</div>
       <h2 class="sec-h">Projects</h2>
     </div>
-    <span class="proj-count">04 Works</span>
+    <a href="https://github.com/ahmed-khx7" target="_blank" style="font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">GitHub ↗</a>
   </div>
 
-  <div class="sr">
-    <div class="proj-item pi-medx" onclick="openM('medx')" data-cursor="View">
-      <span class="pi-num">01</span>
-      <span class="pi-name">MEDX Platform</span>
-      <div class="pi-tags">
-        <span class="pi-tag">Web App</span>
-        <span class="pi-tag">Firebase</span>
-        <span class="pi-tag">Live</span>
+  <div class="proj-grid sr">
+
+    <!-- MEDX — featured -->
+    <div class="pc feat" onclick="openM('medx')" data-cursor="View">
+      <div class="pc-thumb">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80" alt="MEDX">
+        <span class="pc-badge pb-lime">Live · 2025</span>
+        <div class="pc-ov"><button class="pc-ov-btn">View Project</button></div>
       </div>
-      <span class="pi-year">2025</span>
-      <span class="pi-arrow">↗</span>
-    </div>
-    <div class="proj-item pi-fashion" onclick="openM('fashion')" data-cursor="View">
-      <span class="pi-num">02</span>
-      <span class="pi-name">Fashion Studio</span>
-      <div class="pi-tags">
-        <span class="pi-tag">E-commerce</span>
-        <span class="pi-tag">HTML/CSS</span>
+      <div class="pc-info">
+        <div class="pc-name">MEDX Platform</div>
+        <div class="pc-meta">
+          <span class="pc-type">Web App · Firebase · Vercel</span>
+          <span class="pc-yr py-lime">Web App</span>
+        </div>
       </div>
-      <span class="pi-year">2025</span>
-      <span class="pi-arrow">↗</span>
     </div>
-    <div class="proj-item pi-coffe" onclick="openM('coffe')" data-cursor="View">
-      <span class="pi-num">03</span>
-      <span class="pi-name">Coffe.</span>
-      <div class="pi-tags">
-        <span class="pi-tag">Restaurant</span>
-        <span class="pi-tag">HTML/CSS</span>
+
+    <!-- Fashion Studio -->
+    <div class="pc" onclick="openM('fashion')" data-cursor="View">
+      <div class="pc-thumb">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=700&q=80" alt="Fashion">
+        <span class="pc-badge pb-white">E-commerce</span>
+        <div class="pc-ov"><button class="pc-ov-btn">View Project</button></div>
       </div>
-      <span class="pi-year">2025</span>
-      <span class="pi-arrow">↗</span>
-    </div>
-    <div class="proj-item pi-design" onclick="openM('design')" data-cursor="View">
-      <span class="pi-num">04</span>
-      <span class="pi-name">Visual Design & Branding</span>
-      <div class="pi-tags">
-        <span class="pi-tag">Photoshop</span>
-        <span class="pi-tag">Branding</span>
+      <div class="pc-info">
+        <div class="pc-name">Fashion Studio</div>
+        <div class="pc-meta">
+          <span class="pc-type">HTML/CSS · JavaScript</span>
+          <span class="pc-yr py-white">2025</span>
+        </div>
       </div>
-      <span class="pi-year">2024–25</span>
-      <span class="pi-arrow">↗</span>
     </div>
+
+    <!-- Coffe -->
+    <div class="pc" onclick="openM('coffe')" data-cursor="View">
+      <div class="pc-thumb">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=700&q=80" alt="Coffe">
+        <span class="pc-badge pb-white">Restaurant</span>
+        <div class="pc-ov"><button class="pc-ov-btn">View Project</button></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-name">Coffe.</div>
+        <div class="pc-meta">
+          <span class="pc-type">HTML/CSS · JavaScript</span>
+          <span class="pc-yr py-white">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Design — spans 2 cols -->
+    <div class="pc" onclick="openM('design')" data-cursor="View" style="grid-column:span 2">
+      <div class="pc-thumb" style="height:220px">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1000&q=80" alt="Design">
+        <span class="pc-badge pb-red">Photoshop</span>
+        <div class="pc-ov"><button class="pc-ov-btn">View Project</button></div>
+      </div>
+      <div class="pc-info">
+        <div class="pc-name">Visual Design & Branding</div>
+        <div class="pc-meta">
+          <span class="pc-type">Photoshop · Illustrator · Social Media</span>
+          <span class="pc-yr py-red">2024–25</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
