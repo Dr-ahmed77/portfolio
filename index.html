@@ -211,6 +211,67 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);padding
 /* SCROLL REVEAL */
 .sr{opacity:0;transform:translateY(16px);transition:opacity 0.55s ease,transform 0.55s ease}
 .sr.in{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  /* NAV */
+  nav{padding:0 20px;height:58px}
+  .nav-links{display:none}
+  .nav-cta{font-size:0.7rem;padding:8px 14px}
+
+  /* HERO */
+  .hero{grid-template-columns:1fr;padding:0 20px;min-height:auto}
+  .hero-left{padding:40px 0 28px;border-right:none;border-bottom:1px solid var(--border)}
+  .hero-title{font-size:clamp(2.8rem,11vw,4rem)}
+  .hero-desc{font-size:0.88rem;max-width:100%}
+  .hero-btns{flex-direction:column;gap:10px}
+  .btn-v,.btn-ol{text-align:center;display:block;width:100%}
+  .hero-stats{gap:24px;margin-top:0}
+  .hst-n{font-size:1.4rem}
+  .hero-right{padding:24px 0 40px;gap:10px}
+
+  /* PROJECTS */
+  .projects{padding:52px 20px}
+  .pgrid{grid-template-columns:1fr;gap:12px}
+  .pcard.feat{grid-row:auto}
+  .pcard[style*="grid-column:span 2"]{grid-column:auto}
+
+  /* SERVICES */
+  .services{padding:52px 20px}
+  .srow{grid-template-columns:36px 1fr;gap:14px;padding:20px 12px}
+  .sdesc{display:none}
+  .stags{display:none}
+  .srow:hover{margin:0;padding:20px 12px}
+
+  /* ABOUT */
+  .about{grid-template-columns:1fr;gap:36px;padding:52px 20px}
+  .skill-cols{grid-template-columns:1fr 1fr;gap:16px}
+
+  /* CTA */
+  .cta{padding:72px 20px}
+  .cta-btns{flex-direction:column;gap:10px;align-items:center}
+  .btn-cta{width:100%;text-align:center}
+
+  /* FOOTER */
+  footer{flex-direction:column;gap:14px;padding:20px;text-align:center}
+  .flinks-row{gap:16px;flex-wrap:wrap;justify-content:center}
+
+  /* MODAL */
+  .modal{border-radius:16px;max-height:92vh}
+  .modal-hero{height:200px}
+  .modal-hero-title{font-size:1.9rem}
+  .modal-body{padding:22px 20px 28px}
+  .modal-actions{flex-wrap:wrap}
+  .mbtn{font-size:0.74rem;padding:10px 18px;flex:1;text-align:center}
+}
+
+@media(max-width:480px){
+  .hero-title{font-size:2.6rem}
+  .hcard{padding:14px 16px}
+  .sec-title{font-size:1.5rem}
+  .about-title{font-size:1.7rem}
+  .cta-title{font-size:2rem}
+}
 </style>
 </head>
 <body>
@@ -257,15 +318,15 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);padding
       Ahmed<br>
       <span class="dim">Khadar.</span>
     </h1>
-    <p class="hero-desc">Designer, developer & video editor — I build clean, fast digital experiences. From landing pages to full platforms.</p>
+    <p class="hero-desc">Designer, developer & video editor — I build fast, clean websites and digital experiences that get results.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn-v">View Projects</a>
       <a href="mailto:khadar77ahmed@gmail.com" class="btn-ol">Contact Me</a>
     </div>
     <div class="hero-stats">
       <div><span class="hst-n">3<span>+</span></span><span class="hst-l">Years exp.</span></div>
-      <div><span class="hst-n">20<span>+</span></span><span class="hst-l">Projects</span></div>
-      <div><span class="hst-n">4</span><span class="hst-l">Core Skills</span></div>
+      <div><span class="hst-n">20<span>+</span></span><span class="hst-l">Projects done</span></div>
+      <div><span class="hst-n">4</span><span class="hst-l">Skills</span></div>
     </div>
   </div>
   <div class="hero-right">
@@ -377,7 +438,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);padding
 <section class="services" id="services">
   <div class="sec-top sr">
     <h2 class="sec-title">Services</h2>
-    <span style="font-size:0.76rem;color:var(--muted)">04 specialties</span>
+    <span style="font-size:0.76rem;color:var(--muted)">04 services</span>
   </div>
   <div class="slist sr">
     <div class="srow">
@@ -411,9 +472,9 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);padding
 <section class="about" id="about">
   <div class="sr">
     <span class="about-lbl">About Me</span>
-    <h2 class="about-title">Builder.<br><em>Not just a freelancer.</em></h2>
-    <p class="about-p">I'm Ahmed Khadar — based in Algeria. I design interfaces, build web platforms, and create visual content. I work independently and care about the quality of what I ship.</p>
-    <p class="about-p">Currently building MEDX, a full platform for Algerian medical students, while taking on freelance projects across design, dev, and video.</p>
+    <h2 class="about-title">I build things<br><em>that work.</em></h2>
+    <p class="about-p">I'm Ahmed Khadar, based in Algeria. I design interfaces, build web platforms, and create visual content — independently, with attention to every detail.</p>
+    <p class="about-p">Currently running MEDX, a study platform for Algerian medical students, and open to freelance projects in design, development, and video.</p>
     <div class="skill-cols">
       <div class="sgrp">
         <span class="sgrp-lbl">Development</span>
@@ -451,9 +512,9 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);padding
 
 <!-- CTA -->
 <section class="cta">
-  <div class="cta-chip">✦ Open to new projects</div>
-  <h2 class="cta-title">Let's Build<br><em>Something Great</em></h2>
-  <p class="cta-sub">Got a project? I'd love to hear about it. Send me a message and we'll figure out how I can help.</p>
+  <div class="cta-chip">✦ Open to work</div>
+  <h2 class="cta-title">Have a project<br><em>in mind?</em></h2>
+  <p class="cta-sub">Send me a message — I respond fast and get straight to the point.</p>
   <div class="cta-btns">
     <a href="mailto:khadar77ahmed@gmail.com" class="btn-cta">Send an Email →</a>
     <a href="https://instagram.com/ahmed_khx7" target="_blank" class="btn-cta-g">Instagram ↗</a>
@@ -494,7 +555,7 @@ const PROJECTS = {
   medx: {
     tag: 'Web App · Live 2025',
     title: 'MEDX Platform',
-    desc: 'Full-featured study platform for Algerian francophone medical students. QCM quizzes with CSV import, flashcards, XP/leveling system, live voice study rooms (Agora.io), AI assistant Dr. MEDX, leaderboard, community, and admin panel — built as a single-file HTML app on Firebase + Vercel.',
+    desc: 'Study platform for Algerian francophone medical students. Includes QCM with CSV import, flashcards, XP system, live voice rooms, AI assistant, leaderboard, community, and admin panel — built as a single-file app on Firebase + Vercel.',
     stack: ['HTML/CSS','JavaScript','Firebase','Agora.io','Cloudinary','Vercel'],
     img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&q=80',
     heroTitle: 'MEDX',
@@ -506,7 +567,7 @@ const PROJECTS = {
   fashion: {
     tag: 'E-commerce · Web Design',
     title: 'Fashion Studio',
-    desc: 'Full fashion e-commerce website for an Algerian clothing brand. Features product catalog with size selection, lookbook gallery, collections grid, newsletter, and a complete luxury dark aesthetic — designed to convert.',
+    desc: 'Fashion e-commerce site for an Algerian clothing brand. Product catalog with size selection, lookbook gallery, collections grid, newsletter — luxury dark aesthetic, fully responsive.',
     stack: ['HTML/CSS','JavaScript','Unsplash','Responsive'],
     img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80',
     heroTitle: 'Fashion Studio',
@@ -518,7 +579,7 @@ const PROJECTS = {
   coffe: {
     tag: 'Restaurant · Web Design',
     title: 'Coffe.',
-    desc: 'Warm, editorial café and restaurant website for an Algerian brand. Features full menu with tab navigation, photo gallery, testimonials, location map, ambiance section, and a clean cream aesthetic that communicates quality.',
+    desc: 'Café and restaurant website for an Algerian brand. Full menu with tabs, photo gallery, testimonials, location, and ambiance section — warm editorial aesthetic, fully responsive.',
     stack: ['HTML/CSS','JavaScript','Unsplash','Responsive'],
     img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80',
     heroTitle: 'Coffe.',
@@ -530,7 +591,7 @@ const PROJECTS = {
   design: {
     tag: 'Graphic Design · Photoshop',
     title: 'Visual Design & Branding',
-    desc: 'Social media posts, brand identities, and marketing materials crafted in Photoshop. Designed for Algerian businesses — clean compositions, strong typography, and color systems built to stop the scroll and communicate clearly.',
+    desc: 'Social media posts, brand identities, and marketing visuals made in Photoshop — designed for Algerian businesses. Strong typography, clear color systems, built to convert.',
     stack: ['Photoshop','Illustrator','Typography','Branding','Social Media'],
     img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80',
     heroTitle: 'Visual Design',
