@@ -150,6 +150,63 @@ footer{background:var(--deep);padding:56px 52px 24px;border-top:1px solid var(--
 /* SCROLL REVEAL */
 .sr{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
 .sr.in{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  /* NAV */
+  nav{padding:0 20px;height:58px}
+  .nav-links{display:none}
+
+  /* HERO */
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:58px}
+  .hero-left{padding:40px 20px 32px;border-right:none;border-bottom:1px solid var(--border)}
+  .hero-title{font-size:clamp(3rem,12vw,5rem)}
+  .hero-desc{max-width:100%}
+  .hero-actions{flex-direction:column;gap:10px}
+  .btn-gold,.btn-ghost{display:block;text-align:center;width:100%}
+  .hero-right{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px}
+  .hero-big{grid-row:auto;grid-column:span 2}
+
+  /* CATEGORIES */
+  .categories{padding:48px 20px}
+  .cat-grid{grid-template-columns:1fr;gap:8px}
+  .cat-featured{height:280px}
+  .cat-sm{height:180px}
+  .cat-inner{height:100%!important}
+
+  /* PRODUCTS */
+  .products{padding:48px 20px}
+  .prod-grid{grid-template-columns:1fr 1fr;gap:12px}
+
+  /* LOOKBOOK */
+  .lookbook{padding:48px 20px}
+  .look-grid{grid-template-columns:repeat(3,1fr);gap:4px}
+  .look-card:nth-child(4),.look-card:nth-child(5){display:none}
+
+  /* BRAND STRIP */
+  .brand-strip{grid-template-columns:1fr 1fr;gap:0;padding:32px 20px}
+  .bstat-div:nth-child(4),.bstat-div:nth-child(6){display:none}
+  .bstat{padding:12px 8px}
+
+  /* NEWSLETTER */
+  .newsletter{padding:60px 20px}
+  .nl-title{font-size:2rem}
+  .nl-form{flex-direction:column}
+  .nl-input{padding:14px 16px}
+  .nl-btn{padding:13px;text-align:center}
+
+  /* FOOTER */
+  footer{padding:40px 20px 20px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:28px}
+  .foot-bottom{flex-direction:column;gap:8px;text-align:center;padding-top:16px}
+}
+
+@media(max-width:480px){
+  .prod-grid{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr}
+  .hero-right{grid-template-columns:1fr;grid-template-rows:200px 140px 140px}
+  .hero-big{grid-column:auto}
+}
 </style>
 </head>
 <body>
@@ -200,7 +257,7 @@ footer{background:var(--deep);padding:56px 52px 24px;border-top:1px solid var(--
       <em>in</em><br>
       Silence.
     </h1>
-    <p class="hero-desc">Une collection pensée pour celles et ceux qui parlent à travers leur style. Minimalisme audacieux, coupes précises.</p>
+    <p class="hero-desc">Une collection pour ceux qui parlent à travers leur style. Coupes nettes, matières soignées.</p>
     <div class="hero-actions">
       <a href="#products" class="btn-gold">Shop Collection</a>
       <a href="#lookbook" class="btn-ghost">Voir Lookbook →</a>
@@ -384,7 +441,7 @@ footer{background:var(--deep);padding:56px 52px 24px;border-top:1px solid var(--
 <section class="newsletter sr">
   <span class="nl-tag">Rejoins la communauté</span>
   <h2 class="nl-title">Sois le premier<br><em>à le savoir.</em></h2>
-  <p class="nl-sub">Nouvelles collections, offres exclusives — directement dans ta boîte.</p>
+  <p class="nl-sub">Nouvelles collections et offres exclusives en avant-première.</p>
   <div class="nl-form">
     <input class="nl-input" type="email" placeholder="ton@email.com">
     <button class="nl-btn">S'inscrire</button>
@@ -396,7 +453,7 @@ footer{background:var(--deep);padding:56px 52px 24px;border-top:1px solid var(--
   <div class="foot-top sr">
     <div>
       <span class="foot-brand">Fashion <em>Studio</em></span>
-      <p class="foot-desc">Mode algérienne contemporaine. Des pièces pensées pour durer, conçues pour marquer les esprits.</p>
+      <p class="foot-desc">Mode algérienne contemporaine — des pièces pensées pour durer.</p>
       <div class="foot-socials">
         <a href="#" class="fsoc">Ig</a>
         <a href="#" class="fsoc">Tk</a>
