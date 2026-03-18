@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coffe — Café & Restaurant, Alger</title>
+<title>Coffe. — Café & Restaurant, Alger</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -155,6 +155,69 @@ footer{background:var(--espresso);padding:56px 52px 22px}
 /* SCROLL REVEAL */
 .sr{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease}
 .sr.in{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  /* NAV */
+  nav{padding:0 20px;height:58px}
+  .nav-links{display:none}
+  .nav-cta{font-size:0.68rem;padding:8px 14px}
+
+  /* HERO */
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:58px}
+  .hero-left{padding:40px 20px 32px;border-right:none;border-bottom:1px solid var(--border)}
+  .hero-title{font-size:clamp(3rem,12vw,5rem)}
+  .hero-desc{max-width:100%}
+  .hero-actions{flex-direction:column;gap:10px}
+  .btn-espresso,.btn-outline{display:block;text-align:center;width:100%}
+  .hero-hours{gap:24px}
+  .hero-right{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px}
+  .hero-big{grid-row:auto;grid-column:span 2}
+
+  /* STATS */
+  .about-strip{grid-template-columns:1fr 1fr;padding:28px 20px}
+  .astat-div:nth-child(4),.astat-div:nth-child(6){display:none}
+  .astat{padding:10px 8px}
+  .astat-n{font-size:1.8rem}
+
+  /* MENU */
+  .menu{padding:52px 20px}
+  .menu-tabs{overflow-x:auto;gap:0}
+  .menu-tab{white-space:nowrap;padding:10px 16px;font-size:0.66rem}
+  .menu-grid{grid-template-columns:1fr}
+
+  /* GALLERY */
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}
+  .gallery-big{grid-column:auto}
+
+  /* AMBIANCE */
+  .ambiance{grid-template-columns:1fr}
+  .amb-left{padding:52px 20px}
+  .amb-right{min-height:280px}
+
+  /* TESTIMONIALS */
+  .testimonials{padding:52px 20px}
+  .testi-grid{grid-template-columns:1fr}
+
+  /* LOCATION */
+  .location{grid-template-columns:1fr}
+  .loc-left{padding:52px 20px}
+  .loc-map{min-height:280px}
+
+  /* FOOTER */
+  footer{padding:40px 20px 20px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:28px}
+  .foot-bottom{flex-direction:column;gap:8px;text-align:center}
+}
+
+@media(max-width:480px){
+  .foot-top{grid-template-columns:1fr}
+  .hero-right{grid-template-columns:1fr;grid-template-rows:200px 140px 140px}
+  .hero-big{grid-column:auto}
+  .gallery{grid-template-columns:1fr;grid-template-rows:repeat(5,180px)}
+  .gallery-big{grid-column:auto}
+  .btn-espresso,.btn-outline{padding:12px}
+}
 </style>
 </head>
 <body>
@@ -175,10 +238,10 @@ footer{background:var(--espresso);padding:56px 52px 22px}
   <div class="hero-left">
     <div class="hero-tag">Café & Restaurant · Alger</div>
     <h1 class="hero-title">
-      Good<br>coffe,<br>
+      Good<br>coffee,<br>
       <em>better</em><br>moments.
     </h1>
-    <p class="hero-desc">Un café pensé pour ralentir. Des saveurs authentiques, une ambiance chaleureuse, et du café qui mérite qu'on s'assoie.</p>
+    <p class="hero-desc">Café de qualité au cœur d'Alger. Saveurs authentiques, ambiance soignée.</p>
     <div class="hero-actions">
       <a href="#menu" class="btn-espresso">Voir le Menu</a>
       <a href="#location" class="btn-outline">Notre Adresse</a>
@@ -317,7 +380,7 @@ footer{background:var(--espresso);padding:56px 52px 22px}
   <div class="amb-left">
     <span class="amb-tag">Notre Espace</span>
     <h2 class="amb-title">Un endroit<br><em>pour souffler.</em></h2>
-    <p class="amb-desc">Coffe est conçu comme une pause dans ta journée. Lumière naturelle, musique douce, wifi rapide — viens travailler, lire ou juste t'asseoir.</p>
+    <p class="amb-desc">Un espace conçu pour ralentir. Lumière naturelle, musique douce, Wi-Fi rapide.</p>
     <div class="amb-list">
       <div class="amb-feat"><span class="feat-dot"></span>Wi-Fi haut débit gratuit</div>
       <div class="amb-feat"><span class="feat-dot"></span>Salles privatisables pour événements</div>
